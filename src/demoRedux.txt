@@ -1,0 +1,37 @@
+import { createStore } from 'redux'
+
+// let store = createStore()
+// STORE -> Globalized State
+
+// ACTION -> Perform the action to modifying the state
+const increment = () => {
+  return {
+    type: "increment"
+  }
+}
+const decrement = () => {
+  return {
+    type: "decrement"
+  }
+}
+// REDUCER -> Transfers the action, Check the Action
+const counter = (state = 0, action) => {
+  switch (action.type) {
+    case 'increment':
+      return state + 1;
+    case 'decrement':
+      return state - 1;
+  }
+}
+
+let store = createStore(counter)
+// Diasplay it in console
+store.subscribe(() => {
+  console.log(store.getState());
+})
+// DISPATCH -> way to excute the action
+store.dispatch(increment())
+
+store.dispatch(decrement())
+
+store.dispatch(decrement())
